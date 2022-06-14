@@ -1,0 +1,77 @@
+package day0118;
+
+/**
+ * 눈,코,입, 이름, 먹는 일은 부모 클래스에서 정의된 코드를 사용하고(상속:코드의 재사용성) 자신만의 특징을 정의한 클래스<br>
+ * 힘 쎔, 일반 성인 힘 평균 2 힘은 1~10까지
+ * 
+ * @author user
+ */
+public final class Clark extends Person implements Fly {
+
+	public int power;
+
+	/**
+	 * 눈이 3개
+	 */
+	public Clark() {
+		super(3,1,1); //부모 클래스의 인수있는 오버로딩된 생성자를 불러서 일반일과 다르게 만들자
+		power = 8;
+	}// Clark
+
+	/**
+	 * 돌에 따라서 힘이 달라진다.
+	 * 
+	 * @param stone
+	 * @return
+	 */
+	public String power(String stone) {
+		String result = "";
+
+		if (stone.equals("크립토나이트")) { // 힘빠지는 돌
+			result = "~(_-_)~ 힘이 빠진다....";
+			power = 1;
+		} else if (stone.equals("다이아몬드")) { // 기분이 좋은 돌
+			result = "(^-^) 감사";
+			power = 10;
+		} else {// 기분이 나쁜 돌
+			result = "(ㅡㅡ +)기분 나쁨";
+			power = 12;
+
+		} // end else
+
+		return result;
+
+	}// power
+	
+	
+	//집애서 밥을 먹는 일은 빵을 먹는 일로 override
+	@Override
+	public String eat() {
+		return getName()+"이(가) 집에서 빵과 오트밀을 먹는다." ;
+	}//eat
+	
+	@Override
+	//식당아닌 레스토랑에서 사먹는 override
+	public String eat(String menu, int price) {
+		return getName()+"이(가) 레스토랑에서 "+menu+"인 음식을 "+price+"$ 내고 사먹는다.";
+	}
+
+	
+	/////////////나는 기능을 interface로 부터 구현////////////////////////
+	@Override
+	public String upwardForce() {
+		return getName()+"의 양력은 망토로부터 얻는다.";
+	}//upwardForce
+
+	@Override
+	public String drivingForce() {
+		return getName()+"의 추진력은 무릎을 꿇어서 얻는다.";
+	}//drivingForce
+	
+	
+	
+	
+	
+	
+
+}// class
